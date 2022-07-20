@@ -8,7 +8,6 @@ const SearchHeader = ({ onSearch }) => {
     const value = inputRef.current.value;
     onSearch(value);
   };
-  const onClick = () => {};
 
   const onKeyDown = (event) => {
     // console.log(event.keyCode); // 13 is same as 'Enter'
@@ -30,7 +29,7 @@ const SearchHeader = ({ onSearch }) => {
         placeholder="Saerch..."
         onKeyDown={onKeyDown}
       />
-      <button className={styles.button} type="submit" onClick={onClick}>
+      <button className={styles.button} type="submit" onClick={handleSearch}>
         <img
           className={styles.buttonImg}
           src="/images/search.png"

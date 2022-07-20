@@ -19,7 +19,7 @@ class Youtube {
 
   async search(query) {
     return fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&matResults=25&q=${query}&type=video&key=${this.key}`,
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=${this.key}`,
       this.getRequestOptions
     )
       .then((response) => response.json())
