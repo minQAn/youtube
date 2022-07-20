@@ -9,3 +9,15 @@
 .list {
   flex: 1 1 30%;
 }
+
+@media screen and (max-width: 1023px){
+  .content {
+    flex-direction: column;
+  }
+  .list.withDetail {
+    margin-top: 2rem;
+    padding-top: 1.2em;
+    border-top: 1px solid rgba(255, 0 ,0, 0.5);
+    
+  }
+}

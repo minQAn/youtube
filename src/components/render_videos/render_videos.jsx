@@ -10,7 +10,7 @@ const RenderVideos = ({ videos, selectedVideo, selectVideo }) => (
         {<VideoDetail video={selectedVideo} />}
       </div>
     )}
-    <div className={styles.list}>
+    <div className={`${styles.list} ${selectedVideo ? styles.withDetail : ''}`}>
       <VideoList
         videos={videos}
         onVideoClick={selectVideo}
