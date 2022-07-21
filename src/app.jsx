@@ -37,6 +37,7 @@ function App({ youtube }) {
         setIsLoading(false);
       })
       .catch((e) => {
+        console.log(e);
         setErrorMessage('Failed to fetch video list');
         setIsLoading(false);
       });
