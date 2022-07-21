@@ -12,6 +12,7 @@ function App({ youtube }) {
 
   const selectVideo = (video) => {
     setSelectedVideo(video);
+    window.scrollTo({ top: 0, behavior: 'auto' });
   };
   const search = (query) => {
     setSelectedVideo(null); // to go back to the list grid
