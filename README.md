@@ -37,3 +37,17 @@ process.env.REACT_APP_
 
 - Loading Spinner and Error Message
   made it using useState and catch in case the internet is slow or API call fails.
+
+- Axios library
+  update fetch to axios.
+  doesn't have to convert to json format after get request.
+  don't have to list all parameters in the string.
+  can set key as fixed parameter
+  ```
+  // Dependency Injection
+  const httpClient = axios.create({
+    baseURL: 'https://youtube.googleapis.com/youtube/v3',
+    params: { key: process.env.REACT_APP_YOUTUBE_API_KEY }, // set fixed key
+  });
+  const youtube = new Youtube(httpClient);
+  ```
