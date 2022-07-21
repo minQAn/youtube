@@ -19,7 +19,7 @@ const SearchHeader = memo(({ onSearch }) => {
   };
 
   // to check re-rendering like memo and useCallback
-  console.log('Header!!');
+  // console.log('Header!!');
 
   return (
     <header className={styles.header}>
