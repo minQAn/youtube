@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './app.module.css';
 import LoadingSpinner from './components/loading_spinner/loading_spinner';
 import RenderVideos from './components/render_videos/render_videos';
@@ -10,24 +10,27 @@ function App({ youtube }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const selectVideo = (video) => {
+  const selectVideo = useCallback((video) => {
     setSelectedVideo(video);
     window.scrollTo({ top: 0, behavior: 'auto' });
-  };
-  const search = (query) => {
-    setSelectedVideo(null); // to go back to the list grid
-    setIsLoading(true); // to show loading spinner
-    youtube
-      .search(query) //
-      .then((videos) => {
-        setVideos(videos);
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        setErrorMessage('Failed to fetch video list');
-        setIsLoading(false);
-      });
-  };
+  }, []);
+  const search = useCallback(
+    (query) => {
+      setSelectedVideo(null); // to go back to the list grid
+      setIsLoading(true); // to show loading spinner
+      youtube
+        .search(query) //
+        .then((videos) => {
+          setVideos(videos);
+          setIsLoading(false);
+        })
+        .catch((e) => {
+          setErrorMessage('Failed to fetch video list');
+          setIsLoading(false);
+        });
+    },
+    [youtube]
+  );
 
   useEffect(() => {
     setIsLoading(true);

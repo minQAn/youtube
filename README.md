@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+### Youtube Clone Coding using React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It's made of using Youtube API to get 25 of most popular videos, and to search by keyword that user types.
+Also each video can be clicked to direct to the detail page with the video that can be played.
 
-## Available Scripts
+- Service component
+  Service component is separated to keep youtube's service logic and made by class component which is more suitable than functional.
 
-In the project directory, you can run:
+- PostCss
+  CSS files are named like 'app.module.css'.
+  This advantage of using this is that prevents overwritting by giving a unique class name.
 
-### `yarn start`
+```
+// in css, .app is same after styles.
+import styles from './app.module.css';
+<div className={styles.app}></div>
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- env
+  to keep safe API KEY
+  in react, must be like pre REACT*APP*
+  can use like below
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+process.env.REACT_APP_
+```
 
-### `yarn test`
+- useEffect
+  it's used to bring 25 of the most popular vidoes when the app first starts.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- useCallback, memo
+  These are used to optimize by preventing unnecessary re-rendering for the SearchHeader and VideoItem component. But have to use it only when really need it because it takes up memory.
+  Even if used memo, if the function received in prop changes, it will be re-rendered. So used useCallback for the props function.
 
-### `yarn build`
+- Media Querry
+  to make the website responsive
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Loading Spinner and Error Message
+  made it using useState and catch in case the internet is slow or API call fails.

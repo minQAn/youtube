@@ -1,8 +1,10 @@
 import styles from './search_header.module.css';
 
-import React, { useRef } from 'react';
+import React, { memo, useRef } from 'react';
 
-const SearchHeader = ({ onSearch }) => {
+// ** Even though I used memo here, redendering occurs because props is still changing.
+// That's why I have to use useCallback hook.
+const SearchHeader = memo(({ onSearch }) => {
   const inputRef = useRef();
   const handleSearch = () => {
     const value = inputRef.current.value;
@@ -15,6 +17,9 @@ const SearchHeader = ({ onSearch }) => {
       handleSearch();
     }
   };
+
+  // to check re-rendering like memo and useCallback
+  console.log('Header!!');
 
   return (
     <header className={styles.header}>
@@ -38,6 +43,6 @@ const SearchHeader = ({ onSearch }) => {
       </button>
     </header>
   );
-};
+});
 
 export default SearchHeader;
